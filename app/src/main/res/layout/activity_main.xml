@@ -9,6 +9,50 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
+    <ImageButton
+        android:id="@+id/btn_open_converter"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_dollar_sign"
+        android:scaleType="fitCenter"
+        android:padding="12dp"
+        android:contentDescription="Open Converter"
+        app:tint="@color/calc_display_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_scientific"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_scientific_calculator"
+        android:scaleType="fitCenter"
+        android:padding="12dp"
+        android:contentDescription="@string/scientific_calculator"
+        app:tint="@color/calc_display_text"
+        app:layout_constraintEnd_toStartOf="@id/btn_chatbot"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp" />
+
+    <ImageButton
+        android:id="@+id/btn_chatbot"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_send"
+        android:scaleType="fitCenter"
+        android:padding="12dp"
+        android:contentDescription="@string/chatbot_send"
+        app:tint="@android:color/holo_blue_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp" />
+
+    <!-- Calculator Display -->
     <TextView
         android:id="@+id/txt_display"
         android:layout_width="0dp"
@@ -27,14 +71,14 @@
         app:layout_constraintBottom_toTopOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_open_converter" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.30" />
 
     <!-- Row 1 -->
     <com.google.android.material.button.MaterialButton
@@ -221,5 +265,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_dot"
         app:layout_constraintTop_toBottomOf="@id/btn_add" />
+
+    <!-- Math Tutor Window (Initially Hidden) -->
+    <include
+        android:id="@+id/math_tutor_window"
+        layout="@layout/math_tutor_window"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Robot Bubble Button -->
+    <FrameLayout
+        android:id="@+id/robot_bubble"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_robot_bubble"
+        android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_open_converter">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_robot"
+            android:contentDescription="@string/math_tutor"
+            app:tint="#FFFFFF" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

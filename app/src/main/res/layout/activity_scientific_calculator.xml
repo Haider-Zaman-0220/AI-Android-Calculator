@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/calc_background"
+    android:padding="8dp">
+
+    <!-- Header with Back Button, Math Tutor, and Display -->
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttons_grid"
+        app:layout_constraintHeight_percent="0.35">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_sci_back"
+                android:layout_width="62dp"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/close"
+                android:src="@android:drawable/ic_menu_revert"
+                app:tint="@color/calc_display_text" />
+
+            <!-- Math Tutor Robot Bubble -->
+            <FrameLayout
+                android:id="@+id/robot_bubble_sci"
+                android:layout_width="42dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_robot_bubble"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/math_tutor"
+                    android:src="@drawable/ic_robot"
+                    app:tint="#FFFFFF" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_sci_display"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom|end"
+            android:padding="16dp"
+            android:text="0"
+            android:textColor="@color/calc_display_text"
+            android:textSize="36sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:scrollHorizontally="true" />
+    </LinearLayout>
+
+    <!-- Buttons Grid -->
+    <LinearLayout
+        android:id="@+id/buttons_grid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/header_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.65">
+
+        <!-- Row 1: RAD, INV, sin, cos, tan, x!, π, e, C -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_sci_rand"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="Rand"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btn_sci_rad_deg"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="RAD"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btn_sci_sin"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="sin"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_cos"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="cos"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_tan"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="tan"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_factorial"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="x!"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_pi"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="π"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_sci_e"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="e"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_clear"
+                style="@style/ScientificButton.Clear"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="C"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Row 2: (, ), log, ln, x², √, xʸ, %, ⌫ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_sci_left_paren"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="("
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_sci_right_paren"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text=")"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_sci_log"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="log"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_ln"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="ln"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_square"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="x²"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_sqrt"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="√"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_sci_power"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="xʸ"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_percent"
+                style="@style/ScientificButton.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="%"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_sci_backspace"
+                style="@style/ScientificButton.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="⌫"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Row 3: x^-1, x³, 00, 1, 7, 8, 9, ÷, C(orange) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_sci_inverse"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="x⁻¹"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_cube"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="x³"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_00"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="00"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_sci_1"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="1"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_7"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="7"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_8"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="8"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_9"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="9"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_div"
+                style="@style/ScientificButton.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="÷"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_exp_button"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="EXP"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Row 4: ∛, y√x, 0, 2, 4, 5, 6, ×, % -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_sci_cbrt"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="∛"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_sci_yroot"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="ʸ√x"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btn_sci_0"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="0"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_2"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="2"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_4"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="4"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_5"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="5"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_6"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="6"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_mul"
+                style="@style/ScientificButton.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="×"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_mod"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="mod"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Row 5: eˣ, 10ˣ, ., 3, ±, +, −, ⌫ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_sci_exp"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="eˣ"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_sci_10x"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="10ˣ"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btn_sci_dot"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="."
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_3"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="3"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_plus_minus"
+                style="@style/ScientificButton.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="±"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_add"
+                style="@style/ScientificButton.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="+"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_sub"
+                style="@style/ScientificButton.Operator"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="−"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_sci_ans"
+                style="@style/ScientificButton.Number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="ANS"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btn_sci_equals"
+                style="@style/ScientificButton.Equals"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:text="="
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Math Tutor Window (overlays everything) -->
+    <include layout="@layout/math_tutor_window"
+        android:id="@+id/math_tutor_window_sci"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

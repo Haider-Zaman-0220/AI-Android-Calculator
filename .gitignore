@@ -1,15 +1,80 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+# Android / Gradle
+.gradle/
+/build/
+*/build/
+!gradle-wrapper.jar
+
+# Local configuration
 local.properties
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Keystore files
+*.jks
+*.keystore
+keystore.properties
+
+# Log files
+hs_err_pid*.log
+replay_pid*.log
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Kotlin
+/**/*.kotlin_module
+
+# Generated files
+**/generated/
+
+# NDK
+obj/
+
+# Gradle cache
+.gradle
+buildSrc/build
+
+# Ignore env files
+.env
+
+# Android Studio export
+*.apk
+*.ap_
+
+# Crashlytics and Fabric
+crashlytics.properties
+fabric.properties
+
+# JetBrains Rider
+.idea/
+
+# Avoid committing local gradle properties with credentials
+gradle.properties
+
+# Jetpack Compose previews
+.compose
+
+# Coverage
+coverage/
+
+# Flutter (if present)
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Python virtualenv
+venv/
+
+# macOS
+.DS_Store
+
