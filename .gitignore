@@ -68,6 +68,10 @@ gradle.properties
 # Coverage
 coverage/
 
+# Documentation files to ignore (hide all .md except README.md)
+*.md
+!README.md
+
 # Flutter (if present)
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -77,4 +81,3 @@ venv/
 
 # macOS
 .DS_Store
-
